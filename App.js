@@ -4,6 +4,7 @@ import {StackNavigator} from 'react-navigation';
 
 import CategoriesScreen from './screens/categories';
 import ExpertList from './screens/expertlist';
+import Messaging from './screens/messaging';
 
 import Logo from './images/Logo.png';
 
@@ -71,10 +72,13 @@ export default StackNavigator({
   },
   expertlist:{
     screen: ExpertList
+  },
+  messaging:{
+    screen: Messaging
   }
 },
 {
-  initialRouteName: 'expertlist',
+  initialRouteName: 'messaging',
   navigationOptions:{
     headerTintColor: "white",
     headerStyle: { backgroundColor: '#39B1FF'},
