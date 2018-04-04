@@ -18,7 +18,7 @@ class ExpertList extends React.Component{
 		return (
 			<View style={styles.container}>
 				<ExpertCard navigate={this.props.navigation.navigate} image={Oscar} name="Oscar" bio="Auto mechanic for 20 years" />
-				<ExpertCard navigate={this.props.navigation.navigate} image={Emily} name="Emily" bio="Car fanatic\nRestores old vehicles in spare time" />
+				<ExpertCard navigate={this.props.navigation.navigate} image={Emily} name="Emily" bio="Car fanatic who restores old vehicles in her spare time" />
 			</View>
 		);
 	}
@@ -28,7 +28,10 @@ class ExpertList extends React.Component{
 class ExpertCard extends React.Component{
 	render(){
 		const nextPage = ()=>{
-			this.props.navigate('messaging');
+			this.props.navigate('messaging',{
+				image: this.props.image,
+				name: this.props.name
+			});
 		}
 		return (
 			<View style={styles.expertCard}>

@@ -18,6 +18,7 @@ class Categories extends React.Component{
 		headerLeft:null		
 	};
 
+
 	render(){
 		const items = [
 			{text:"Cars",image:Cars},

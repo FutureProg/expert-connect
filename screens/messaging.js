@@ -1,14 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View,Button,TouchableOpacity} from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 import Emily from '../images/emily.jpeg';
+import Oscar from '../images/oscar.jpeg';
 
-class Messaging extends React.Component{
+class Messaging extends React.Component{	
 
-	static navigationOptions = {
-		title: 'Expert Connect'
+	static navigationOptions = ({navigation})=>{
+		const { params } = navigation.state;
+		return {
+			title: 'Expert Connect',
+			headerRight:(
+				<TouchableOpacity
+					onPress={()=>navigation.navigate("rating",{...params})} style={{paddingRight:20}}>
+					<Text style={{color:'white',fontWeight:'500'}}>Finished</Text>
+				</TouchableOpacity>
+			)
+		}
 	}
 
 	componentWillMount(){
@@ -22,7 +32,9 @@ class Messaging extends React.Component{
 		});
 	}
 
-	render(){
+	render(){		
+		const { params } = this.props.navigation.state;
+
 		const sendMessage = (messages = [])=>{
 			this.setState({
 				messages: GiftedChat.append(this.state.messages,messages)
@@ -31,12 +43,12 @@ class Messaging extends React.Component{
 				this.setState({
 					messages: GiftedChat.append(this.state.messages,[{
 						_id:1,
-						text:'Hey there! Let me see what I can do to help you :)',
+						text:'Hey there! Let me see what I can do to help you 😄',
 						createdAt: new Date(),
 						user:{
 							_id: 2,
-							name: 'Emily',
-							avatar: Emily
+							name: params.name,
+							avatar: params.image
 						}
 					}])
 				});

@@ -5,6 +5,9 @@ import {StackNavigator} from 'react-navigation';
 import CategoriesScreen from './screens/categories';
 import ExpertList from './screens/expertlist';
 import Messaging from './screens/messaging';
+import Rating from './screens/rating';
+
+import BGImage from './images/home_bg.png';
 
 import Logo from './images/Logo.png';
 
@@ -29,10 +32,15 @@ class WelcomeScreen extends React.Component{
           </TouchableOpacity>             
            */}
           <Image source={Logo} style={{marginBottom:50}}/>                    
-          <Button title="LOGIN" onPress={nextPage}/>                    
-          <Button title="SIGNUP" onPress={nextPage}/>                    
+          <TouchableOpacity onPress={nextPage} style={{marginTop:30,backgroundColor:'white',elevation:2,width: 100,padding: 10}}>
+						<Text style={{fontWeight:'500',color:'black',textAlign:'center'}}>Login</Text>
+					</TouchableOpacity>
+          <TouchableOpacity onPress={nextPage} style={{marginTop:30,backgroundColor:'white',elevation:2,width: 100,padding: 10}}>
+						<Text style={{fontWeight:'500',color:'black',textAlign:'center'}}>Sign up</Text>
+					</TouchableOpacity>                
         </View>
         <View style={{flex:0.6}}/>
+        <Image source={BGImage} style={{position:'absolute',left:0,top:0,width:'100%',height:'100%',resizeMode:'cover',zIndex:-1}}/>
       </View>
     );
   }
@@ -75,10 +83,13 @@ export default StackNavigator({
   },
   messaging:{
     screen: Messaging
+  },
+  rating:{
+    screen: Rating
   }
 },
 {
-  initialRouteName: 'messaging',
+  initialRouteName: 'welcome',
   navigationOptions:{
     headerTintColor: "white",
     headerStyle: { backgroundColor: '#39B1FF'},
